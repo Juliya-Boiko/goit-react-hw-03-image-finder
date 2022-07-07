@@ -18,11 +18,11 @@ export class ImageGallery extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.query !== this.props.query || prevState.page !== this.state.page) {
-            this.setState({ status: 'loading' });
+            this.setState({ status: 'loading', page: 1, hits: [], totalHits: null });
             imgParams.q = this.props.query;
             imgParams.page = this.state.page;
             getImages(imgParams).then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.setState((prevState) => ({
                     status: 'resolved',
                     hits: [...prevState.hits, ...response.data.hits],

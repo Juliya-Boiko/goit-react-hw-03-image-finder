@@ -15,7 +15,8 @@ export class Searchbar extends Component {
 
     handlerSubmit = (evt) => {
         evt.preventDefault();
-        if (this.state.query === '') {
+        if (this.state.query.trim() === '') {
+            // this.setState({query: '',})
             toast.warn('ENTER SEARCH QUERY!', {
                 theme: "colored",
                 closeOnClick: true,
