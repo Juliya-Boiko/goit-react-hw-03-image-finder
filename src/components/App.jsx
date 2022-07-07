@@ -8,6 +8,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery'
 export class App extends Component {
   state = {
     query: '',
+    // page: 1,
   }
 
   handlerSearchbarSubit = (value) => {
@@ -20,7 +21,7 @@ export class App extends Component {
     return (
       <div>
         <Searchbar onSubmit={this.handlerSearchbarSubit} />
-        <ImageGallery query={this.state.query} />
+        <ImageGallery query={this.state.query}/>
        <ToastContainer
         position="top-center"
         autoClose={3000}

@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { imgParams } from '../utils/getImages';
+// import { imgParams } from '../utils/getImages';
 import { getImages } from '../utils/getImages';
 
 export class ImageGallery extends Component {
@@ -17,12 +17,27 @@ export class ImageGallery extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+
         if (prevProps.query !== this.props.query || prevState.page !== this.state.page) {
-            this.setState({ status: 'loading' });
-            imgParams.q = this.props.query;
-            imgParams.page = this.state.page;
+            this.setState({ status: 'loading', page: 1, hits: [], totalHits: null });
+            const imgParams = {
+                q: this.props.query,
+                page: this.state.page,
+            }
             getImages(imgParams).then((response) => {
-                // console.log(response.data);
+                this.setState({
+                    status: 'resolved',
+                    hits: [...response.data.hits],
+                    totalHits: response.data.totalHits,
+                })
+            });
+        }
+        if (prevState.page !== this.state.page) {
+            const imgParams = {
+                q: this.props.query,
+                page: this.state.page,
+            }
+            getImages(imgParams).then((response) => {
                 this.setState((prevState) => ({
                     status: 'resolved',
                     hits: [...prevState.hits, ...response.data.hits],
