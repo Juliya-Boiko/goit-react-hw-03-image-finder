@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import { imgParams } from '../utils/getImages';
 import { getImages } from '../utils/getImages';
 
 export class ImageGallery extends Component {
@@ -17,7 +16,6 @@ export class ImageGallery extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
         if (prevProps.query !== this.props.query || prevState.page !== this.state.page) {
             this.setState({ status: 'loading', page: 1, hits: [], totalHits: null });
             const imgParams = {
@@ -73,7 +71,7 @@ export class ImageGallery extends Component {
                             </li>;
                         })}
                     </ul>
-                    {totalHits > 12 && <button type='button' onClick={this.handleLoadBtnClick}>Load more</button>}
+                    {/* {totalHits > 12 && <button type='button' onClick={this.handleLoadBtnClick}>Load more</button>} */}
                 </div>
             );
         }

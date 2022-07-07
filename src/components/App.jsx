@@ -8,7 +8,6 @@ import { ImageGallery } from './ImageGallery/ImageGallery'
 export class App extends Component {
   state = {
     query: '',
-    // page: 1,
   }
 
   handlerSearchbarSubit = (value) => {
