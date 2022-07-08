@@ -1,7 +1,8 @@
 import { Component } from "react";
 import PropTypes from 'prop-types';
+import { ImageGalleryCardImage } from './ImageGalleryCard.styled';
 
-export class ImageGalleryItem extends Component {
+export class ImageGalleryCard extends Component {
     state = {
         isModalOpen: false,
     } 
@@ -19,7 +20,7 @@ export class ImageGalleryItem extends Component {
         const { isModalOpen } = this.state;
         return (
             <div>
-                <img src={item.webformatURL} onClick={this.openModal} alt="" width="50px" />
+                <ImageGalleryCardImage src={item.webformatURL} onClick={this.openModal} alt="" width="50px" />
                 {isModalOpen && <img src={item.largeImageURL} alt=""/>}
             </div>
         );
