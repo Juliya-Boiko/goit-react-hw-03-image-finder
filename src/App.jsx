@@ -7,6 +7,7 @@ import { Idle } from './components/Idle/Idle';
 import { LoaderSpinner } from './components/Loader/Loader';
 import { UncorrectSearch } from './components/UncorrectSearch/UncorrectSearch';
 import { PrimaryButton } from './components/common/PrimaryButton.styled';
+
 export class App extends Component {
     state = {
         q: '',
