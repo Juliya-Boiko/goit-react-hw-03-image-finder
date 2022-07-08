@@ -1,9 +1,14 @@
 import { Component } from "react";
+import PropTypes from 'prop-types';
 
 export class ImageGalleryItem extends Component {
     state = {
         isModalOpen: false,
     } 
+
+    static propTypes = {
+        item: PropTypes.object.isRequired,
+    };
 
     openModal = () => {this.setState({ isModalOpen: true, })}
 

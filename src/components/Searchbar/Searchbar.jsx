@@ -1,9 +1,16 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Header, SearchForm, SearchFormInput, SearchFormButton } from './Searchbar.styled';
+import { HiSearch } from "react-icons/hi";
 
 export class Searchbar extends Component {
     state = {
         query: '',
     }
+
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+    };
 
     handlerChange = (evt) => {
         this.setState({
@@ -23,9 +30,9 @@ export class Searchbar extends Component {
 
     render() {
         return (
-            <header>
-                <form onSubmit={this.handlerSubmit}>
-                    <input
+            <Header>
+                <SearchForm onSubmit={this.handlerSubmit}>
+                    <SearchFormInput
                         type="text"
                         name='query'
                         autoComplete="off"
@@ -34,9 +41,11 @@ export class Searchbar extends Component {
                         onChange={this.handlerChange}
                         value={this.state.query}
                     />
-                    <button type='submit'>Search</button>
-                </form>
-            </header>
+                    <SearchFormButton type='submit'>
+                        <HiSearch size="30px"/>
+                    </SearchFormButton>
+                </SearchForm>
+            </Header>
         );
     }
 }

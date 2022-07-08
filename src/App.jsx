@@ -1,8 +1,11 @@
 import 'modern-normalize';
 import { Component } from 'react';
 import { Searchbar } from './components/Searchbar/Searchbar';
-import { getImages } from './components/utils/getImages';
+import { getImages } from './utils/getImages';
 import { ImageGallery } from './components/ImageGallery/ImageGallery';
+import { Idle } from './components/Idle/Idle';
+import { LoaderSpinner } from './components/Loader/Loader';
+import { UncorrectSearch } from './components/UncorrectSearch/UncorrectSearch';
 
 export class App extends Component {
     state = {
@@ -53,54 +56,12 @@ export class App extends Component {
     return (
         <div>
             <Searchbar onSubmit={this.handlerSearchbarSubmit} />
-            {status === 'idle' && <p>Enter a word</p>}
-            {status === 'loading' && <p>Loading...</p>}
-            {status === 'resolved' && totalHits === 0 && <p>No matches</p>}
+            {status === 'idle' && <Idle />}
+            {status === 'loading' && <LoaderSpinner />}
+            {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
             {status === 'resolved' && totalHits > 0 && <ImageGallery items={hits} />}
             {totalHits > 12 && <button type='button' onClick={this.handlerLoadMoreClick}>Load more</button>}
        </div>
     );
   }
 }
-
-//=======================================================
-
-
-
-
-// import { Searchbar } from './Searchbar/Searchbar';
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { ImageGallery } from './ImageGallery/ImageGallery'
-
-// export class App extends Component {
-//   state = {
-//     query: '',
-//   }
-
-//   handlerSearchbarSubit = (value) => {
-//     this.setState({
-//       query: value,
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <Searchbar onSubmit={this.handlerSearchbarSubit} />
-//         <ImageGallery query={this.state.query}/>
-//        <ToastContainer
-//         position="top-center"
-//         autoClose={3000}
-//         hideProgressBar={false}
-//         newestOnTop={false}
-//         closeOnClick
-//         rtl={false}
-//         pauseOnFocusLoss
-//         draggable
-//         pauseOnHover
-//         />
-//       </div>
-//     )
-//   }
-// }
