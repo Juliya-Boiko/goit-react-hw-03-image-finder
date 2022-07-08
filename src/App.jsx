@@ -6,7 +6,7 @@ import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import { Idle } from './components/Idle/Idle';
 import { LoaderSpinner } from './components/Loader/Loader';
 import { UncorrectSearch } from './components/UncorrectSearch/UncorrectSearch';
-
+import { PrimaryButton } from './components/common/PrimaryButton.styled';
 export class App extends Component {
     state = {
         q: '',
@@ -14,21 +14,6 @@ export class App extends Component {
         hits: [],
         totalHits: null,
         status: 'idle',
-    }
-
-    handlerSearchbarSubmit = (value) => {
-        this.setState({
-        q: value,
-        page: 1,
-        hits: [],
-        totalHits: null
-        })
-    }
-
-    handlerLoadMoreClick = () => {
-        this.setState((prevState) => ({
-        page: prevState.page + 1,
-        }))
     }
 
     componentDidUpdate(_, prevState) {
@@ -51,6 +36,21 @@ export class App extends Component {
         }
     }
 
+    handlerSearchbarSubmit = (value) => {
+        this.setState({
+        q: value,
+        page: 1,
+        hits: [],
+        totalHits: null
+        })
+    }
+
+    handlerLoadMoreClick = () => {
+        this.setState((prevState) => ({
+        page: prevState.page + 1,
+        }))
+    }
+
   render() {
     const { hits, totalHits, status} = this.state;
     return (
@@ -60,7 +60,7 @@ export class App extends Component {
             {status === 'loading' && <LoaderSpinner />}
             {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
             {status === 'resolved' && totalHits > 0 && <ImageGallery items={hits} />}
-            {totalHits > 12 && <button type='button' onClick={this.handlerLoadMoreClick}>Load more</button>}
+            {totalHits > 12 && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
        </div>
     );
   }

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import PropTypes from 'prop-types';
+import { Modal } from '../Modal/Modal';
 import { ImageGalleryCardImage } from './ImageGalleryCard.styled';
 
 export class ImageGalleryCard extends Component {
@@ -21,7 +22,7 @@ export class ImageGalleryCard extends Component {
         return (
             <div>
                 <ImageGalleryCardImage src={item.webformatURL} onClick={this.openModal} alt="" width="50px" />
-                {isModalOpen && <img src={item.largeImageURL} alt=""/>}
+                {isModalOpen && <Modal src={item.largeImageURL} onClose={this.closeModal} />}
             </div>
         );
     }
