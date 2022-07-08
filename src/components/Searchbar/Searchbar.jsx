@@ -1,6 +1,4 @@
 import { Component } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export class Searchbar extends Component {
     state = {
@@ -16,14 +14,7 @@ export class Searchbar extends Component {
     handlerSubmit = (evt) => {
         evt.preventDefault();
         if (this.state.query.trim() === '') {
-            // this.setState({query: '',})
-            toast.warn('ENTER SEARCH QUERY!', {
-                theme: "colored",
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                });
+            alert('empty');            
             return;
         }
         this.props.onSubmit(this.state.query);
@@ -32,19 +23,20 @@ export class Searchbar extends Component {
 
     render() {
         return (
-            <div>
+            <header>
                 <form onSubmit={this.handlerSubmit}>
-                <input
-                    type="text"
-                    name='query'
-                    autoComplete="off"
-                    autoFocus
-                    placeholder="Search images and photos"
-                    onChange={this.handlerChange}
-                    value={this.state.query}/>
-                <button type='submit'>Search</button>
+                    <input
+                        type="text"
+                        name='query'
+                        autoComplete="off"
+                        autoFocus
+                        placeholder="Search images and photos"
+                        onChange={this.handlerChange}
+                        value={this.state.query}
+                    />
+                    <button type='submit'>Search</button>
                 </form>
-            </div>
-        )
+            </header>
+        );
     }
 }
