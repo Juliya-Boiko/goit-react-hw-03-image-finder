@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, SearchForm, SearchFormInput, SearchFormButton } from './Searchbar.styled';
 import { HiSearch } from "react-icons/hi";
+import { toast } from 'react-toastify';
 
 export class Searchbar extends Component {
     state = {
@@ -21,7 +22,15 @@ export class Searchbar extends Component {
     handlerSubmit = (evt) => {
         evt.preventDefault();
         if (this.state.query.trim() === '') {
-            alert('empty');            
+            toast.warn('Please, enter something!', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         }
         this.props.onSubmit(this.state.query);

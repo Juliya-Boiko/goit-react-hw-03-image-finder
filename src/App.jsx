@@ -7,6 +7,8 @@ import { Idle } from './components/Idle/Idle';
 import { LoaderSpinner } from './components/Loader/Loader';
 import { UncorrectSearch } from './components/UncorrectSearch/UncorrectSearch';
 import { PrimaryButton } from './components/common/PrimaryButton.styled';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class App extends Component {
     state = {
@@ -62,7 +64,18 @@ export class App extends Component {
             {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
             {status === 'resolved' && totalHits > 0 && <ImageGallery items={hits} />}
             {totalHits > 12 && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
-       </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+        </div>
     );
   }
 }
