@@ -34,6 +34,18 @@ Searchbar.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 // import { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import { Header, SearchForm, SearchFormInput, SearchFormButton } from './Searchbar.styled';

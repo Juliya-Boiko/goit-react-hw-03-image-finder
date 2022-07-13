@@ -81,7 +81,7 @@ export class App extends Component {
             {status === 'loading' && <LoaderSpinner />}
             {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
             {status === 'resolved' && totalHits > 0 && <ImageGallery items={hits} />}
-            {totalHits > 12 && page !== lastPage && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
+            {status !== 'loading' && totalHits > 12 && page !== lastPage && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
             <ToastContainer
                 position="top-center"
                 autoClose={3000}
