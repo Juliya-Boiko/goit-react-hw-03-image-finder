@@ -78,10 +78,10 @@ export class App extends Component {
         <div>
             <Searchbar onSubmit={this.handlerSearchbarSubmit} />
             {status === 'idle' && <Idle />}
-            {status === 'loading' && <LoaderSpinner />}
             {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
-            {status === 'resolved' && totalHits > 0 && <ImageGallery items={hits} />}
-            {status !== 'loading' && totalHits > 12 && page !== lastPage && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
+            {totalHits > 0 && <ImageGallery items={hits} />}
+            {status === 'loading' && <LoaderSpinner />}
+            {totalHits > 12 && page !== lastPage && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
             <ToastContainer
                 position="top-center"
                 autoClose={3000}
