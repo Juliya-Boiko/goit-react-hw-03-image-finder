@@ -67,27 +67,27 @@ export class App extends Component {
     }
 
     render() {
-    const { page, lastPage, hits, totalHits, status} = this.state;
-    return (
-        <div>
-            <Searchbar onSubmit={this.handlerSearchbarSubmit} />
-            {status === 'idle' && <Idle />}
-            {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
-            {totalHits > 0 && <ImageGallery items={hits} />}
-            {status === 'loading' && <LoaderSpinner />}
-            {totalHits > 12 && page !== lastPage && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
-            <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-        </div>
-    );
+        const { page, lastPage, hits, totalHits, status} = this.state;
+        return (
+            <div>
+                <Searchbar onSubmit={this.handlerSearchbarSubmit} />
+                {status === 'idle' && <Idle />}
+                {status === 'resolved' && totalHits === 0 && <UncorrectSearch />}
+                {totalHits > 0 && <ImageGallery items={hits} />}
+                {status === 'loading' && <LoaderSpinner />}
+                {totalHits > 12 && page !== lastPage && <PrimaryButton type='button' onClick={this.handlerLoadMoreClick}>Load more</PrimaryButton>}
+                <ToastContainer
+                    position="top-center"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+            </div>
+        );
     }
 }
