@@ -21,7 +21,7 @@ export class ImageGalleryCard extends Component {
         const { isModalOpen } = this.state;
         return (
             <div>
-                <ImageGalleryCardImage src={item.webformatURL} onClick={this.openModal} alt="" width="50px" />
+                <ImageGalleryCardImage src={item.webformatURL} onClick={this.openModal} alt="" />
                 {isModalOpen && <Modal src={item.largeImageURL} onClose={this.closeModal} />}
             </div>
         );
