@@ -21,6 +21,6 @@ export const fetchQuery = async (params) => {
         const result = await customAxios.get('', { params });
         return result;
     } catch (error) {
-        toast.warn('Pixabay error!');
+        toast.error('Pixabay error!');
     }
 }
